@@ -1,0 +1,37 @@
+﻿@page
+@model RazorPagesEventMakerIC.Pages.Events.CreateEventModel
+@{
+    ViewData["Title"] = "CreateEvent";
+}
+
+<h1>Create Event</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Event.Name" class="custom-control-label"></label>
+                <input asp-for="@Model.Event.Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.Description" class="custom-control-label"></label>
+                <input asp-for="@Model.Event.Description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.City" class="custom-control-label"></label>
+                <input asp-for="@Model.Event.City" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.DateTime" class="custom-control-label"></label>
+                <input asp-for="@Model.Event.DateTime" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="create" class="btn btn-primary" />
+            </div>
+            <div>
+                <a asp-page="Index">Back to list</a>
+            </div>
+        </form>
+
+    </div>
+</div>

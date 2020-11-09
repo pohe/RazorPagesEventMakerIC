@@ -3,31 +3,47 @@
 @{
     ViewData["Title"] = "Index Events";
 }
+<div>
+    <form method="get">
+        <p>
+            Search:
+            <input type="text" asp-for="Criteria" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+</div>
+
 
 <h1>List of events</h1>
 
+<p>
+    <a asp-page="CreateEvent">Create New</a>
+</p>
+
+
+<p>Antal elementer i Events: @Model.Events.Count</p>
 <table class="table">
     <thead>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Place</th>
-        <th>DateTime</th>
-    </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Place</th>
+            <th>DateTime</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.Events)
-    {
-        <tr>
-            <td> @item.Id</td>
-            <td> @item.Name</td>
-            <td> @item.Description</td>
-            <td> @item.City</td>
-            <td> @item.DateTime</td>
-        </tr>
+        @foreach (var item in Model.Events)
+        {
+            <tr>
+                <td> @item.Id</td>
+                <td> @item.Name</td>
+                <td> @item.Description</td>
+                <td> @item.City</td>
+                <td> @item.DateTime</td>
+            </tr>
 
-    }
+        }
     </tbody>
 </table>
 

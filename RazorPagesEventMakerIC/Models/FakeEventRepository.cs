@@ -23,7 +23,7 @@ namespace RazorPagesEventMakerIC.Models
             events.Add(new Event()
             {
                 Id = 2,
-                Name = "Copenhagen Maraton",
+                Name = "Copenhagen Marathon",
                 City = "Copenhagen",
                 Description = "A long exercise run",
                 DateTime = new DateTime(2020, 7, 3, 0, 0, 0)
@@ -34,6 +34,28 @@ namespace RazorPagesEventMakerIC.Models
         {
             return events.ToList();
         }
+
+        public void AddEvent(Event ev)
+        {
+            List<int> eventsIds = new List<int>();
+
+            foreach (var evt in events)
+            {
+                eventsIds.Add(evt.Id);
+            }
+
+            if (eventsIds.Count != 0)
+            {
+                int start = eventsIds.Max();
+                ev.Id = start + 1;
+            }
+            else
+            {
+                ev.Id = 1;
+            }
+            events.Add(ev);
+        }
+
 
     }
 

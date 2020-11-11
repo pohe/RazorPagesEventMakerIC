@@ -16,9 +16,18 @@ namespace RazorPagesEventMakerIC.Pages.Events
         [BindProperty(SupportsGet = true)]
         public string Criteria { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public DateTime DateFrom { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public DateTime DateTo { get; set; }
+
+
         public IndexModel()
         {
-            repo = new FakeEventRepository();
+            DateFrom = DateTime.Now;
+            DateTo = DateFrom.AddYears(1);
+            repo = new FakeEventRepository();// Der skal kun være et objekt af FakeEventRepository
         }
         public void OnGet()
         {
@@ -26,22 +35,23 @@ namespace RazorPagesEventMakerIC.Pages.Events
                 Events = (List<Event>)repo.GetAllEvents();
             else
             {
-                Events = FilteredEvents(Criteria);
+                Events = FilteredEvents();
             }
             
         }
 
-        private List<Event> FilteredEvents(string criteria)
+        private List<Event> FilteredEvents()
         {
             List<Event> emptyList = new List<Event>();
-            string lcriteria = criteria.ToLower();
+            string lcriteria = Criteria.ToLower();
 
             foreach (Event e in (repo.GetAllEvents()))
             {
                 string lName = e.Name.ToLower();
                 string lCity = e.City.ToLower();
                 string lDescription = e.Description.ToLower();
-                if (lName.Contains(lcriteria)  || lCity.Contains(lcriteria) || lDescription.Contains(criteria))
+                //if (lName.Contains(lcriteria)  || lCity.Contains(lcriteria) || lDescription.Contains( lcriteria))
+                if (e.DateTime>=DateFrom  && e.DateTime <= DateTo)
                     emptyList.Add(e);
             }
 

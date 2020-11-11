@@ -8,6 +8,8 @@
         <p>
             Search:
             <input type="text" asp-for="Criteria" />
+            <input asp-for="@Model.DateFrom"  />
+            <input asp-for="@Model.DateTo"  />
             <input type="submit" value="Filter" />
         </p>
     </form>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RazorPagesEventMakerIC.Models
 {
-    public class FakeEventRepository
+    public class FakeEventRepository  //Skal implementeres som en singleton
     {
         private List<Event> events { get; }
 
@@ -18,7 +18,7 @@ namespace RazorPagesEventMakerIC.Models
                 Name = "Roskilde Festival",
                 City = "Roskilde",
                 Description = "A lot of music",
-                DateTime = new DateTime(2020, 7, 3, 0, 0, 0)
+                DateTime = new DateTime(2020, 12, 13, 0, 0, 0)
             });
             events.Add(new Event()
             {
@@ -26,7 +26,7 @@ namespace RazorPagesEventMakerIC.Models
                 Name = "Copenhagen Marathon",
                 City = "Copenhagen",
                 Description = "A long exercise run",
-                DateTime = new DateTime(2020, 7, 3, 0, 0, 0)
+                DateTime = new DateTime(2020, 12, 23, 0, 0, 0)
             });
         }
 

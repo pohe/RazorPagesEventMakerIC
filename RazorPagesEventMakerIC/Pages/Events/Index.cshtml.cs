@@ -27,7 +27,7 @@ namespace RazorPagesEventMakerIC.Pages.Events
         {
             DateFrom = DateTime.Now;
             DateTo = DateFrom.AddYears(1);
-            repo = new FakeEventRepository();// Der skal kun være et objekt af FakeEventRepository
+            repo = FakeEventRepository.Instance;// Der skal kun være et objekt af FakeEventRepository
         }
         public void OnGet()
         {
@@ -37,7 +37,6 @@ namespace RazorPagesEventMakerIC.Pages.Events
             {
                 Events = FilteredEvents();
             }
-            
         }
 
         private List<Event> FilteredEvents()
@@ -54,7 +53,6 @@ namespace RazorPagesEventMakerIC.Pages.Events
                 if (e.DateTime>=DateFrom  && e.DateTime <= DateTo)
                     emptyList.Add(e);
             }
-
             return emptyList;
         }
 

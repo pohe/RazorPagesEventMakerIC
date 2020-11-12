@@ -8,24 +8,23 @@ using RazorPagesEventMakerIC.Models;
 
 namespace RazorPagesEventMakerIC.Pages.Events
 {
-    public class CreateEventModel : PageModel
+    public class EditEventModel : PageModel
     {
-
         private FakeEventRepository repo;
 
         [BindProperty]
         public Event Event { get; set; }
 
-        public CreateEventModel()
+        public EditEventModel()
         {
             repo = FakeEventRepository.Instance;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int id)
         {
+            Event = repo.GetEvents(id);
             return Page();
         }
-
 
         public IActionResult OnPost()
         {
@@ -33,11 +32,9 @@ namespace RazorPagesEventMakerIC.Pages.Events
             {
                 return Page();
             }
-
-            repo.AddEvent(Event);
+            repo.UpdateEvent(Event);
             return RedirectToPage("Index");
         }
 
     }
-
 }

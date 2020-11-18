@@ -4,13 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorPagesEventMakerIC.Interfaces;
 using RazorPagesEventMakerIC.Models;
+using RazorPagesEventMakerIC.Services;
 
 namespace RazorPagesEventMakerIC.Pages.Events
 {
     public class IndexModel : PageModel
     {
-        private FakeEventRepository repo;
+        private IRepository repo;
         public List<Event> Events { get; set; }
 
         //[BindProperty(SupportsGet = true)]
@@ -26,11 +28,12 @@ namespace RazorPagesEventMakerIC.Pages.Events
         public DateTime DateTo { get; set; }
 
 
-        public IndexModel()
+        public IndexModel(IRepository repository)
         {
             DateFrom = DateTime.Now;
             DateTo = DateFrom.AddYears(1);
-            repo = FakeEventRepository.Instance;// Der skal kun være et objekt af FakeEventRepository
+            //repo = FakeEventRepository.Instance;// Der skal kun være et objekt af FakeEventRepository
+            repo = repository;
         }
         public void OnGet()
         {

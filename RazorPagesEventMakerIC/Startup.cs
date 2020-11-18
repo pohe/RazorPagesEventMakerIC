@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RazorPagesEventMakerIC.Interfaces;
+using RazorPagesEventMakerIC.Services;
 
 namespace RazorPagesEventMakerIC
 {
@@ -24,6 +26,9 @@ namespace RazorPagesEventMakerIC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSingleton<IRepository, FakeEventRepository>();
+            //services.AddSingleton<IRepository, FileEventRepository>();
+            //services.AddSingleton<IRepository, DatabaseEventRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

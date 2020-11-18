@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
+using RazorPagesEventMakerIC.Interfaces;
+using RazorPagesEventMakerIC.Models;
 
-namespace RazorPagesEventMakerIC.Models
+namespace RazorPagesEventMakerIC.Services
 {
-    public class FakeEventRepository  //Skal implementeres som en singleton
+    public class FakeEventRepository : IRepository
     {
         private List<Event> events;
 
-        private static FakeEventRepository _instance;
-        private FakeEventRepository()
+        //private static FakeEventRepository _instance;
+        public FakeEventRepository()
         {
             events = new List<Event>();
             events.Add(new Event()
@@ -32,7 +32,7 @@ namespace RazorPagesEventMakerIC.Models
             });
         }
 
-        public static FakeEventRepository Instance
+        /*public static FakeEventRepository Instance
         {
             get
             {
@@ -41,8 +41,9 @@ namespace RazorPagesEventMakerIC.Models
                 return _instance;
             }
         }
+        */
 
-        public IEnumerable<Event> GetAllEvents()
+        public List<Event> GetAllEvents()
         {
             return events.ToList();
         }

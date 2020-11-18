@@ -4,20 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorPagesEventMakerIC.Interfaces;
 using RazorPagesEventMakerIC.Models;
+using RazorPagesEventMakerIC.Services;
 
 namespace RazorPagesEventMakerIC.Pages.Events
 {
     public class EditEventModel : PageModel
     {
-        private FakeEventRepository repo;
+        private IRepository repo;
 
         [BindProperty]
         public Event Event { get; set; }
 
-        public EditEventModel()
+        public EditEventModel(IRepository repository)
         {
-            repo = FakeEventRepository.Instance;
+            //repo = FakeEventRepository.Instance;
+            repo = repository;
         }
 
         public IActionResult OnGet(int id)

@@ -98,6 +98,41 @@ namespace RazorPagesEventMakerIC.Models
             }
         }
 
+        private List<Event> FilteredEventsDatesOnly(DateTime dateFrom, DateTime dateTo)
+        {
+            List<Event> emptyList = new List<Event>();
+
+
+            foreach (Event e in GetAllEvents())
+            {
+                if (e.DateTime >= dateFrom && e.DateTime <= dateTo)
+                    emptyList.Add(e);
+            }
+            return emptyList;
+        }
+
+        public List<Event> FilteredEvents(string criteria, DateTime dateFrom, DateTime dateTo)
+        {
+            if (criteria == "" || criteria == null)
+                return FilteredEventsDatesOnly(dateFrom, dateTo);
+            List<Event> emptyList = new List<Event>();
+            string lcriteria = criteria.ToLower();
+
+            foreach (Event e in GetAllEvents())
+            {
+                string lName = e.Name.ToLower();
+                string lCity = e.City.ToLower();
+                string lDescription = e.Description.ToLower();
+                if (lName.Contains(lcriteria) || lCity.Contains(lcriteria) || lDescription.Contains(lcriteria))
+                {
+                    if (e.DateTime >= dateFrom && e.DateTime <= dateTo)
+                        emptyList.Add(e);
+                }
+
+            }
+            return emptyList;
+        }
+
     }
 
 

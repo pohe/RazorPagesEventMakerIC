@@ -13,13 +13,16 @@ namespace RazorPagesEventMakerIC.Pages.Events
         private FakeEventRepository repo;
         public List<Event> Events { get; set; }
 
-        [BindProperty(SupportsGet = true)]
+        //[BindProperty(SupportsGet = true)]
+        [BindProperty]
         public string Criteria { get; set; }
 
-        [BindProperty(SupportsGet = true)]
+        //[BindProperty(SupportsGet = true)]
+        [BindProperty]
         public DateTime DateFrom { get; set; }
 
-        [BindProperty(SupportsGet = true)]
+        //[BindProperty(SupportsGet = true)]
+        [BindProperty]
         public DateTime DateTo { get; set; }
 
 
@@ -31,30 +34,15 @@ namespace RazorPagesEventMakerIC.Pages.Events
         }
         public void OnGet()
         {
-            if (Criteria == "" || Criteria == null)
-                Events = (List<Event>)repo.GetAllEvents();
-            else
-            {
-                Events = FilteredEvents();
-            }
+            Events = repo.FilteredEvents(Criteria, DateFrom, DateTo);
         }
 
-        private List<Event> FilteredEvents()
+        public void OnPost()
         {
-            List<Event> emptyList = new List<Event>();
-            string lcriteria = Criteria.ToLower();
-
-            foreach (Event e in (repo.GetAllEvents()))
-            {
-                string lName = e.Name.ToLower();
-                string lCity = e.City.ToLower();
-                string lDescription = e.Description.ToLower();
-                //if (lName.Contains(lcriteria)  || lCity.Contains(lcriteria) || lDescription.Contains( lcriteria))
-                if (e.DateTime>=DateFrom  && e.DateTime <= DateTo)
-                    emptyList.Add(e);
-            }
-            return emptyList;
+            Events = repo.FilteredEvents(Criteria, DateFrom, DateTo);
         }
+
+        
 
     }
 

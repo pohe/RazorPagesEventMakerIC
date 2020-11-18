@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index Events";
 }
 <div>
-    <form method="get">
+    <form method="post">
         <p>
             Search:
-            <input type="text" asp-for="Criteria" />
+            <input type="text" asp-for="@Model.Criteria" />
             <input asp-for="@Model.DateFrom"  />
             <input asp-for="@Model.DateTo"  />
             <input type="submit" value="Filter" />

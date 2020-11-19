@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 1,
+    "Name": "Roskilde opera Festival",
+    "Description": " A lot of music ",
+    "City": "Roskilde",
+    "DateTime": "2021-03-22T00:00:00"
+  },
+  {
+    "Id": 2,
+    "Name": "CPH Marathon",
+    "Description": " Runners from other           countries",
+    "City": "Copenhagen",
+    "DateTime": "2020-10-25T08:55:00"
+  }, { "Id": 3, "Name": "Rock festival", "Description": "musik", "City": "Århus", "DateTime": "2020-11-19T17:42:00" },
+  { "Id": 4, "Name": "Opera", "Description": "Hygge", "City": "Odense","DateTime":"2020-11-19T16:45:00"}]

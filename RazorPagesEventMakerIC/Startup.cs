@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RazorPagesEventMakerIC.Interfaces;
+using RazorPagesEventMakerIC.Models;
 using RazorPagesEventMakerIC.Services;
 
 namespace RazorPagesEventMakerIC
@@ -26,10 +28,11 @@ namespace RazorPagesEventMakerIC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton<IRepository, FakeEventRepository>();
-            //services.AddSingleton<IRepository, FileEventRepository>();
+            //services.AddSingleton<IRepository, FakeEventRepository>();
+            services.AddSingleton<IRepository, JsonEventRepository>();
             //services.AddSingleton<IRepository, DatabaseEventRepository>();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

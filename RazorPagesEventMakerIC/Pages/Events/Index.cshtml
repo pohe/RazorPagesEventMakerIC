@@ -1,5 +1,7 @@
 ﻿@page
+@using RazorPagesEventMakerIC.Interfaces
 @model RazorPagesEventMakerIC.Pages.Events.IndexModel
+@inject IRepository repository
 @{
     ViewData["Title"] = "Index Events";
 }
@@ -50,4 +52,32 @@
     </tbody>
 </table>
 
+
+<h2>Alle events i repository</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Place</th>
+        <th>DateTime</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in repository.GetAllEvents())
+    {
+        <tr>
+            <td> @item.Id</td>
+            <td> @item.Name</td>
+            <td> @item.Description</td>
+            <td> @item.City</td>
+            <td> @item.DateTime</td>
+            <td><a asp-page="EditEvent" asp-route-id="@item.Id">Edit</a></td>
+        </tr>
+
+    }
+    </tbody>
+</table>
 

@@ -19,6 +19,8 @@ namespace RazorPagesEventMakerIC.Pages.Events
         [BindProperty]
         public Event Event { get; set; }
 
+
+        //select list
         public SelectList CountryCodes { get; set; }
 
         public CreateEventModel(IRepository repository, ICountryRepository crepo)

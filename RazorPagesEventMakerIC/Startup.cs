@@ -28,8 +28,11 @@ namespace RazorPagesEventMakerIC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            //services.AddSingleton<IRepository, FakeEventRepository>();
-            services.AddSingleton<IRepository, JsonEventRepository>();
+            services.AddSingleton<IRepository, FakeEventRepository>();
+            services.AddSingleton<ICountryRepository, FakeCountryRepository>();
+            //services.AddSingleton<IRepository, JsonEventRepository>();
+            //services.AddTransient<IRepository, JsonEventRepository>();
+
             //services.AddSingleton<IRepository, DatabaseEventRepository>();
         }
 

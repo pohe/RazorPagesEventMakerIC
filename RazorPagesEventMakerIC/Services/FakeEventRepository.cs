@@ -18,19 +18,22 @@ namespace RazorPagesEventMakerIC.Services
             {
                 Id = 1,
                 Name = "Roskilde Festival",
+                CountryCode = "DK",
                 City = "Roskilde",
                 Description = "A lot of music",
-                DateTime = new DateTime(2020, 12, 13, 0, 0, 0)
+                DateTime = new DateTime(2021, 7, 3, 0, 0, 0)
             });
             events.Add(new Event()
             {
                 Id = 2,
-                Name = "Copenhagen Marathon",
-                City = "Copenhagen",
+                Name = "Paris Marathon",
+                CountryCode = "FR",
+                City = "Paris",
                 Description = "A long exercise run",
-                DateTime = new DateTime(2020, 12, 23, 0, 0, 0)
+                DateTime = new DateTime(2020, 11, 17, 0, 0, 0)
             });
         }
+
 
         /*public static FakeEventRepository Instance
         {
@@ -134,6 +137,18 @@ namespace RazorPagesEventMakerIC.Services
             return emptyList;
         }
 
+        public List<Event> SearchEventsByCode(string code)
+        {
+            List<Event> returnList = new List<Event>();
+            foreach (Event ev in events)
+            {
+                if (code == ev.CountryCode)
+                {
+                    returnList.Add(ev);
+                }
+            }
+            return returnList;
+        }
     }
 
 

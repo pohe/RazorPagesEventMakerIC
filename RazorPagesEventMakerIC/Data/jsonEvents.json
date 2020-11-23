@@ -1,6 +1,7 @@
 [
   {
     "Id": 1,
+    "CountryCode": "DK",
     "Name": "Roskilde opera Festival",
     "Description": " A lot of music ",
     "City": "Roskilde",
@@ -8,6 +9,7 @@
   },
   {
     "Id": 2,
+    "CountryCode": "DK",
     "Name": "CPH Marathon",
     "Description": " Runners from other           countries",
     "City": "Copenhagen",

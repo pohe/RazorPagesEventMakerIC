@@ -10,6 +10,8 @@ namespace RazorPagesEventMakerIC.Models
     {
         public int Id { get; set; }
 
+        public string CountryCode { get; set; }
+
         [Display(Name = "Event Name")]
         [Required(ErrorMessage = "Name of the Event is required"), MaxLength(30)]
         public string Name { get; set; }

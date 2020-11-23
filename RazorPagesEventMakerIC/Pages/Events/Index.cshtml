@@ -33,20 +33,22 @@
             <th>Name</th>
             <th>Description</th>
             <th>Place</th>
+            <th>Country code</th>
             <th>DateTime</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Events)
         {
-            <tr>
-                <td> @item.Id</td>
-                <td> @item.Name</td>
-                <td> @item.Description</td>
-                <td> @item.City</td>
-                <td> @item.DateTime</td>
-                <td><a asp-page="EditEvent" asp-route-id="@item.Id">Edit</a></td>
-            </tr>
+        <tr>
+            <td> @item.Id</td>
+            <td> @item.Name</td>
+            <td> @item.Description</td>
+            <td> @item.City</td>
+            <td> @item.CountryCode</td>
+            <td> @item.DateTime</td>
+            <td><a asp-page="EditEvent" asp-route-id="@item.Id">Edit</a></td>
+        </tr>
 
         }
     </tbody>
@@ -62,6 +64,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Place</th>
+        <th>Country code</th>
         <th>DateTime</th>
     </tr>
     </thead>
@@ -73,6 +76,7 @@
             <td> @item.Name</td>
             <td> @item.Description</td>
             <td> @item.City</td>
+            <td> @item.CountryCode</td>
             <td> @item.DateTime</td>
             <td><a asp-page="EditEvent" asp-route-id="@item.Id">Edit</a></td>
         </tr>

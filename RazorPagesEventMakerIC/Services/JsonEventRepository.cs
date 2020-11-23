@@ -106,5 +106,10 @@ namespace RazorPagesEventMakerIC.Services
             }
             return emptyList;
         }
+
+        public List<Event> SearchEventsByCode(string code)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

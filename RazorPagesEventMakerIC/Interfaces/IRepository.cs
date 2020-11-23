@@ -14,8 +14,6 @@ namespace RazorPagesEventMakerIC.Interfaces
         void UpdateEvent(Event evt);
 
         List<Event> FilteredEvents(string criteria, DateTime dateFrom, DateTime dateTo);
-
-
-
+        List<Event> SearchEventsByCode(string code);
     }
 }
